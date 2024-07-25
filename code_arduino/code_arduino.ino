@@ -5,7 +5,7 @@
 #include <Wire.h>
 #include "RTClib.h"
 #include <EEPROM.h>
-#include "GravityTDS.h"
+
 
 
 RTC_DS3231 rtc;
@@ -211,43 +211,20 @@ void loop() {
     digitalWrite(pumpphup, HIGH);
   }
 //
-//  if (t > 25 && h < 85) {
-//    digitalWrite(fogger, HIGH);
-//    digitalWrite(kipas, LOW);
-//  }
-//  if (t < 25 && h > 95) {
-//    digitalWrite(fogger, LOW);
-//    digitalWrite(kipas, HIGH);
-//  }
-//  if (t > 25 && h > 95) {
-//    digitalWrite(fogger, LOW);
-//    digitalWrite(kipas, HIGH);
-//  }
-//  if (t < 25 && h < 85) {
-//    digitalWrite(fogger, HIGH);
-//    digitalWrite(kipas, LOW);
-//  }
-//    if (t < 25 && h > 85) {
-//    digitalWrite(fogger, LOW);
-//    digitalWrite(kipas, HIGH);
-//  }
-//    if (t < 25 && h > 95) {
-//    digitalWrite(fogger, LOW);
-//    digitalWrite(kipas, HIGH);
-//  }
-//    if (t < 25 && h > 95) {
-//    digitalWrite(fogger, HIGH);
-//    digitalWrite(kipas, LOW);
-//  }
+
     if ( h > 95) {
     digitalWrite(fogger, HIGH);
-    digitalWrite(kipas, LOW);
     delay(10000);
   }
-      if ( h < 95) {
+  if (h>95) {
+  digitalWrite(kipas, LOW);
+  }
+      if ( h < 85) {
     digitalWrite(fogger, LOW);
-    digitalWrite(kipas, HIGH);
     delay(10000);
+  }
+  if ( h <95) {
+     digitalWrite(kipas, HIGH);
   }
 
   if (jam >= 5 && jam <= 18) {
